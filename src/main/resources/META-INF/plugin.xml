@@ -5,19 +5,17 @@
 
     <description>JetBrains extension to easily upload documents to IMPERIAL</description>
 
-    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
-         on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <notificationGroup id="IMPERIAL" displayType="BALLOON"  />
     </extensions>
 
     <actions>
         <group id="IMPERIAL.CreateDocument" text="Create Document" description="Create the document" >
             <add-to-group group-id="CutCopyPasteGroup" anchor="first" />
-            <action class="in.imperialb.imperialjetbrains.CreateDocument" id="IMPERIAL.Actions.CreateDocument" text="Create Document" />
+            <action class="in.imperialb.imperialjetbrains.CreateDocument" id="IMPERIAL.Actions.CreateDocument" text="Create Document From Selection" />
+            <action class="in.imperialb.imperialjetbrains.CreateEntireDocument" id="IMPERIAL.Actions.CreateEntireDocument" text="Create Document From File" />
         </group>
-        <!-- Add your actions here -->
     </actions>
 </idea-plugin>
