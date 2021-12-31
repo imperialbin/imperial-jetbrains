@@ -25,14 +25,11 @@ class CreateDocument: AnAction() {
 
         val res: khttp.responses.Response = khttp.post("${Utils.V1_URI}/document", json=mapOf("content" to selectedText))
         if(res.statusCode != 200) {
-            println("Errorroororor" + res.statusCode.toString())
+            Notify.errorNotification("Error ${res.statusCode}")
             return;
         }
+
         val obj: JSONObject = res.jsonObject;
-
-        println(obj)
-
-
-        Messages.showMessageDialog("Yo fuck", obj["success"] as String, Messages.getErrorIcon())
+        Notify.successNotification(e.project, "Success! ${obj["success"]}")
     }
 }

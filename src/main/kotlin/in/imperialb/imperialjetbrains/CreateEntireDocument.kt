@@ -29,13 +29,11 @@ class CreateEntireDocument: AnAction() {
 
         val res: Response = post("${Utils.V1_URI}/document", json=mapOf("content" to content, "settings" to mapOf("language" to fileExtension)))
         if(res.statusCode != 200) {
-            println("Errorroororor" + res.statusCode.toString())
+            Notify.errorNotification("Error ${res.statusCode}")
             return
         }
+
         val obj: JSONObject = res.jsonObject
-
-        println(obj)
-
         Notify.successNotification(e.project,"Success!")
     }
 }
