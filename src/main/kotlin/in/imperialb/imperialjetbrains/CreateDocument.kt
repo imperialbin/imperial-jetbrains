@@ -13,10 +13,7 @@ class CreateDocument: AnAction() {
         val editor: Editor? = e.getData(PlatformDataKeys.EDITOR);
         if(editor === null) return;
 
-        val selectedText = editor.selectionModel.selectedText;
-        if(selectedText === null || selectedText.trim().isEmpty()) return;
-
-        e.presentation.isEnabled = true;
+        e.presentation.isEnabled = editor.selectionModel.hasSelection();
     }
 
     override fun actionPerformed(e: AnActionEvent) {
@@ -26,10 +23,16 @@ class CreateDocument: AnAction() {
         val selectedText = editor.selectionModel.selectedText;
         if (selectedText != null && selectedText.isEmpty()) return;
 
-        val res: khttp.responses.Response = khttp.post("${Utils.V1_URI}/document", mapOf("content" to selectedText))
+        val res: khttp.responses.Response = khttp.post("${Utils.V1_URI}/document", json=mapOf("content" to selectedText))
+        if(res.statusCode != 200) {
+            println("Errorroororor" + res.statusCode.toString())
+            return;
+        }
         val obj: JSONObject = res.jsonObject;
+
+        println(obj)
+
 
         Messages.showMessageDialog("Yo fuck", obj["success"] as String, Messages.getErrorIcon())
     }
-
 }
