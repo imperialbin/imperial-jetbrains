@@ -1,5 +1,7 @@
 package `in`.imperialb.imperialjetbrains
 
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
@@ -29,11 +31,11 @@ class CreateEntireDocument: AnAction() {
 
         val res: Response = post("${Utils.V1_URI}/document", json=mapOf("content" to content, "settings" to mapOf("language" to fileExtension)))
         if(res.statusCode != 200) {
-            Notify.errorNotification("Error ${res.statusCode}")
+            Notify.errorNotification(e.project, "Error ${res.statusCode}")
             return
         }
 
         val obj: JSONObject = res.jsonObject
-        Notify.successNotification(e.project,"Success!")
+        Notify.successNotification(e.project,"Successfully created your document.")
     }
 }

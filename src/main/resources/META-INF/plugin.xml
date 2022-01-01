@@ -8,7 +8,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="IMPERIAL" displayType="BALLOON"  />
+        <notificationGroup id="imperial.notifications" displayType="BALLOON"  />
     </extensions>
 
     <actions>

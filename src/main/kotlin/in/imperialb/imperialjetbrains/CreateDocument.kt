@@ -1,5 +1,7 @@
 package `in`.imperialb.imperialjetbrains
 
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.ui.Messages
@@ -25,11 +27,11 @@ class CreateDocument: AnAction() {
 
         val res: khttp.responses.Response = khttp.post("${Utils.V1_URI}/document", json=mapOf("content" to selectedText))
         if(res.statusCode != 200) {
-            Notify.errorNotification("Error ${res.statusCode}")
+            Notify.errorNotification(e.project, "Error ${res.statusCode}")
             return;
         }
 
         val obj: JSONObject = res.jsonObject;
-        Notify.successNotification(e.project, "Success! ${obj["success"]}")
+        Notify.successNotification(e.project,"Success!")
     }
 }
