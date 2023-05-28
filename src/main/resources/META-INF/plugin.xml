@@ -1,0 +1,36 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>in.imperialb.imperial</id>
+    <name>IMPERIAL</name>
+    <vendor email="noreply@imperialb.in" url="https://imperialb.in">IMPERIAL</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+  Share code with anyone in a matter of seconds.
+  ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable id="imperial"
+                             displayName="IMPERIAL"
+                             groupId="IMPERIAL"
+                             instance="in.imperialb.imperial.SettingsPageForm"
+        />
+        <notificationGroup id="IMPERIAL" displayType="BALLOON" isLogByDefault="false"/>
+    </extensions>
+    <actions>
+        <action id="imperial.Share"
+                text="Upload to IMPERIAL"
+                class="in.imperialb.imperial.CreateDocument"
+                description="Upload your selected text in seconds!">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <keyboard-shortcut first-keystroke="control shift s" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>
