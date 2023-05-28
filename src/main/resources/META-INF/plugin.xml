@@ -1,21 +1,36 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>in.imperialb.imperialjetbrains</id>
+    <id>in.imperialb.imperial</id>
     <name>IMPERIAL</name>
     <vendor email="noreply@imperialb.in" url="https://imperialb.in">IMPERIAL</vendor>
 
-    <description>JetBrains extension to easily upload documents to IMPERIAL</description>
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+  Share code with anyone in a matter of seconds.
+  ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="imperial.notifications" displayType="BALLOON"  />
+        <projectConfigurable id="imperial"
+                             displayName="IMPERIAL"
+                             groupId="IMPERIAL"
+                             instance="in.imperialb.imperial.SettingsPageForm"
+        />
+        <notificationGroup id="IMPERIAL" displayType="BALLOON" isLogByDefault="false"/>
     </extensions>
-
     <actions>
-        <group id="IMPERIAL.CreateDocument" text="Create Document" description="Create the document" >
-            <add-to-group group-id="CutCopyPasteGroup" anchor="first" />
-            <action class="in.imperialb.imperialjetbrains.CreateDocument" id="IMPERIAL.Actions.CreateDocument" text="Create Document From Selection" />
-            <action class="in.imperialb.imperialjetbrains.CreateEntireDocument" id="IMPERIAL.Actions.CreateEntireDocument" text="Create Document From File" />
-        </group>
+        <action id="imperial.Share"
+                text="Upload to IMPERIAL"
+                class="in.imperialb.imperial.CreateDocument"
+                description="Upload your selected text in seconds!">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <keyboard-shortcut first-keystroke="control shift s" keymap="$default"/>
+        </action>
     </actions>
 </idea-plugin>
