@@ -13,9 +13,7 @@ import com.intellij.openapi.components.Storage
 )
 @Service
 class SettingsService : PersistentStateComponent<SettingsService.State> {
-
     data class State(var settings: Settings = Settings())
-
     private var state = State()
 
     var settings: Settings

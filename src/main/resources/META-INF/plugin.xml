@@ -12,6 +12,7 @@
   ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <idea-version since-build="213"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable id="imperial"
