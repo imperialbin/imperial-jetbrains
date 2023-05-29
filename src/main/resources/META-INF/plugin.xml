@@ -4,11 +4,38 @@
     <name>IMPERIAL</name>
     <vendor email="noreply@imperialb.in" url="https://imperialb.in">IMPERIAL</vendor>
 
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-  Share code with anyone in a matter of seconds.
+<h1 id="imperial">imperial</h1>
+<p>Share code with anyone in a matter of seconds.</p>
+<p>Select text within your IDE and upload it with minimal effort.</p>
+<h2 id="tutorial">Tutorial</h2>
+<ol>
+<li>Install IMPERIAL in your Jetbrain&#39;s IDE</li>
+<li>Select text in your file</li>
+<li>Right click and click <code>Upload Document</code> (or run your configured keybind)</li>
+</ol>
+<h2 id="settings">Settings</h2>
+<h3 id="customization">Customization</h3>
+<ul>
+<li><code>API Key</code>: Your IMPERIAL API key, this is needed to enable other settings.</li>
+<li><code>Expiration</code>: An integer of days, of how long to keep the paste before expiration.</li>
+<li><code>Instant Delete</code>: Deletes the document after the first view from a human.</li>
+<li><code>Image Embed</code>: View the code uploaded as an image, instead of text in the embed.</li>
+<li><code>Long URLs</code>: Have longer URLs</li>
+<li><code>Short URLs</code>: Have short URLs</li>
+</ul>
+<h3 id="keybinds">Keybinds</h3>
+<ul>
+<li><code>Upload Document</code>: Shift + ctrl + s</li>
+</ul>
+<h2 id="other-products">Other Products</h2>
+<ul>
+<li><a href="https://github.com/imperialbin/imperial.js">imperial.js</a> - JavaScript SDK for IMPERIAL&#39;s API.</li>
+<li><a href="https://github.com/imperialbin/imperial.py">imperial.py</a> - Python SDK for IMPERIAL&#39;s API.</li>
+<li><a href="https://github.com/imperialbin/imperial-rs">imperial-rs</a> - Rust SDK for IMPERIAL&#39;s API.</li>
+<li><a href="https://github.com/imperialbin/imperial-vsc">imperial-vsc</a> - VSC extension for IMPERIAL&#39;s API.</li>
+</ul>
+
   ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
