@@ -82,12 +82,12 @@ class CreateDocument : AnAction() {
         val selectedText = editor.selectionModel.selectedText
         if (selectedText === null || selectedText.isEmpty()) return
 
-        // JSON map
         var settings = SettingsService.instance.settings
         val client = OkHttpClient()
 
         val payloadSettings = mutableMapOf<String, Any?>(
-            "language" to "plaintext",
+            // @everyone, if someone knows how to get the language from the editor please make a pr, jetbrains docs suck and i cant find them :(
+            "language" to "auto",
             "image_embed" to settings.imageEmbed,
             // ill do this later
             "encrypted" to false,
