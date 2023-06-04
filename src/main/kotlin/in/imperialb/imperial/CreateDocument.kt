@@ -115,7 +115,8 @@ class CreateDocument : AnAction() {
                 JSONObject(
                     mapOf(
                         "content" to selectedText,
-                        "settings" to payloadSettings
+                        "settings" to payloadSettings,
+                        "infer_settings" to true
                     )
                 ).toString().toRequestBody("application/json".toMediaTypeOrNull())
             )
